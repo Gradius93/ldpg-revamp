@@ -9,7 +9,7 @@ import {
   getProjectSlugs,
   projects,
 } from "@/data/projects";
-import ImageCarousel from "@/components/ImageCarousel";
+import ImageCarousel from "@/components/sections/ImageCarousel";
 
 interface ProjectPageProps {
   project: Project;

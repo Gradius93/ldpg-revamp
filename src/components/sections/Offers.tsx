@@ -54,7 +54,7 @@ export default function Offers() {
   }, []);
 
   return (
-    <div id="offers" className="space-y-12 max-w-7xl mx-auto">
+    <div id="offers" className="space-y-12">
       {items.map((item, index) => (
         <div
           key={item.title}
@@ -74,7 +74,7 @@ export default function Offers() {
           `}
         >
           {/* Main Content Div */}
-          <div className="flex flex-col gap-8 p-8 rounded-lg shadow-lg bg-white flex-1 max-w-md">
+          <div className="flex flex-col gap-8 p-8 rounded-lg shadow-lg bg-white flex-1">
             {/* Icon at Top - aligned opposite to side image */}
             <div
               className={`flex-shrink-0 ${
@@ -103,8 +103,8 @@ export default function Offers() {
           </div>
 
           {/* Side Image Outside Main Div */}
-          <div className="flex-shrink-0">
-            <div className="h-64 w-80 md:h-80 md:w-96 relative bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center">
+          <div className="flex-1">
+            <div className="h-64 w-full md:h-80 relative bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center">
               {item.sideImage ? (
                 <Image
                   src={item.sideImage}

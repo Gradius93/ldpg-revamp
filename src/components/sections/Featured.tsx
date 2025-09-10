@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getAllProjects } from "../data/projects";
+import { getAllProjects } from "../../data/projects";
 import { useEffect, useRef, useState } from "react";
 
 export default function Featured() {
@@ -83,23 +83,6 @@ export default function Featured() {
 
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-
-              {/* Status Badge */}
-              <div className="absolute top-4 right-4 z-10">
-                <span
-                  className={`px-3 py-1 text-xs font-semibold rounded-full backdrop-blur-sm ${
-                    project.status === "Available"
-                      ? "bg-green-500/80 text-white"
-                      : project.status === "All Sold"
-                      ? "bg-red-500/80 text-white"
-                      : project.status === "In Progress"
-                      ? "bg-blue-500/80 text-white"
-                      : "bg-gray-500/80 text-white"
-                  }`}
-                >
-                  {project.status}
-                </span>
-              </div>
 
               {/* Property Name Overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">

@@ -18,7 +18,7 @@ export default function Projects() {
   return (
     <>
       <Head>
-        <title>Projects - LDPG</title>
+        <title>Portfolio</title>
         <meta
           name="description"
           content="Explore our portfolio of completed projects"
