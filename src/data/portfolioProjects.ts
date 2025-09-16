@@ -1,14 +1,4 @@
-export interface Project {
-  id: string;
-  title: string;
-  location: string;
-  description: string;
-  status: string;
-  completed: string;
-  images?: string[];
-  nextProject?: string;
-  slug: string;
-}
+import { Project } from "@/types";
 
 export const projects: Record<string, Project> = {
   "1-aberdeen-terrace-se3": {
@@ -128,10 +118,10 @@ export function getProject(slug: string): Project | undefined {
   return projects[slug];
 }
 
-export function getAllProjects(): Project[] {
+export function getAllPortfolioProjects(): Project[] {
   return Object.values(projects);
 }
 
-export function getProjectSlugs(): string[] {
+export function getPortfolioProjectSlugs(): string[] {
   return Object.keys(projects);
 }

@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { HeroImage } from "@/types";
+import Link from "next/link";
 
-const heroImages = [
+const heroImages: HeroImage[] = [
   {
     src: "/images/main-home-1.jpg",
     alt: "LDPG luxury patio development",
@@ -44,7 +46,7 @@ export default function Hero() {
         ))}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30" />
         <div className="absolute inset-0 flex items-center">
-          <div className="max-w-6xl mx-auto px-4 text-white">
+          <div className="max-w-7xl mx-auto px-4 text-white">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight drop-shadow-2xl text-shadow-lg">
               Land Development Property Group
             </h1>
@@ -52,12 +54,12 @@ export default function Hero() {
               Revitalizing South East London, one luxury development at a time.
             </p>
             <div className="mt-10">
-              <a
-                href="#offers"
+              <Link
+                href="/about"
                 className="inline-block bg-black/80 hover:bg-black text-white px-8 py-4 text-sm uppercase tracking-wide font-semibold transition-all duration-300 backdrop-blur-sm border border-white/20 drop-shadow-lg"
               >
                 Know More —
-              </a>
+              </Link>
             </div>
           </div>
         </div>

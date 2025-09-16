@@ -4,11 +4,11 @@ import Image from "next/image";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useState } from "react";
 import {
-  Project,
   getProject,
-  getProjectSlugs,
+  getPortfolioProjectSlugs,
   projects,
-} from "@/data/projects";
+} from "@/data/portfolioProjects";
+import { Project } from "@/types";
 import ImageCarousel from "@/components/sections/ImageCarousel";
 
 interface ProjectPageProps {
@@ -39,7 +39,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
         <meta name="description" content={project.description} />
       </Head>
 
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Breadcrumb Navigation */}
         <nav className="text-sm text-gray-600 mb-8">
           <div className="flex items-center space-x-2">
@@ -153,7 +153,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = getProjectSlugs();
+  const slugs = getPortfolioProjectSlugs();
   const paths = slugs.map((slug) => ({
     params: { slug },
   }));

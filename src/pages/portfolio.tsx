@@ -1,98 +1,69 @@
 import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
+import { getAllPortfolioProjects } from "@/data/portfolioProjects";
+import { Project } from "@/types";
+import TitleBanner from "@/components/banners/TitleBanner";
 
-export default function LandDevelopment() {
+export default function Projects() {
+  const projects = getAllPortfolioProjects();
+
+  // Helper function to get project image or fallback
+  const getProjectImage = (project: Project) => {
+    if (project.images && project.images.length > 0) {
+      return project.images[0];
+    }
+    // Use available main home images as fallbacks
+    return "/images/main-home-1.jpg";
+  };
+
   return (
     <>
       <Head>
-        <title>Land Development - LDPG</title>
+        <title>Portfolio</title>
         <meta
           name="description"
-          content="Professional land development services for residential and commercial projects"
+          content="Explore our portfolio of completed projects"
         />
       </Head>
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold mb-8">Land Development Services</h1>
-        <p className="text-lg text-gray-600 mb-12">
-          Our comprehensive land development services transform raw land into
-          valuable, functional properties ready for construction and
-          development.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <div>
-            <h2 className="text-2xl font-semibold mb-6">Our Expertise</h2>
-            <ul className="space-y-4 text-gray-600">
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-600 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                Site planning and design
-              </li>
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-600 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                Zoning and permit acquisition
-              </li>
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-600 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                Infrastructure development
-              </li>
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-600 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                Environmental assessments
-              </li>
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-600 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                Utility coordination
-              </li>
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-600 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                Construction management
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-2xl font-semibold mb-6">Development Process</h2>
-            <div className="space-y-6">
-              <div className="border-l-4 border-blue-600 pl-4">
-                <h3 className="font-semibold mb-2">1. Site Analysis</h3>
-                <p className="text-gray-600 text-sm">
-                  Comprehensive evaluation of land characteristics and
-                  development potential
-                </p>
-              </div>
-              <div className="border-l-4 border-blue-600 pl-4">
-                <h3 className="font-semibold mb-2">2. Planning & Design</h3>
-                <p className="text-gray-600 text-sm">
-                  Creating detailed development plans that maximize land value
-                </p>
-              </div>
-              <div className="border-l-4 border-blue-600 pl-4">
-                <h3 className="font-semibold mb-2">3. Approvals</h3>
-                <p className="text-gray-600 text-sm">
-                  Navigating regulatory requirements and securing necessary
-                  permits
-                </p>
-              </div>
-              <div className="border-l-4 border-blue-600 pl-4">
-                <h3 className="font-semibold mb-2">4. Implementation</h3>
-                <p className="text-gray-600 text-sm">
-                  Managing construction and infrastructure development
-                </p>
-              </div>
-            </div>
-          </div>
+      <TitleBanner
+        title="Portfolio"
+        backgroundImage="/images/BannerImage.jpg"
+      />
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="text-center max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 mb-12">
+            Discover our portfolio of successful land development and
+            construction projects. Each project showcases our commitment to
+            quality, innovation, and sustainable development.
+          </p>
         </div>
 
-        <div className="bg-gray-50 rounded-lg p-8">
-          <h2 className="text-2xl font-semibold mb-4">
-            Ready to Develop Your Land?
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Contact us today to discuss your land development project. Our team
-            of experts will work with you to create a development plan that
-            meets your goals and budget.
-          </p>
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-            Get Started
-          </button>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {projects.map((project, index) => (
+            <Link
+              key={project.id}
+              href={`/projects/${project.slug}`}
+              className="relative bg-white shadow-md rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300 group aspect-[4/3] opacity-0 animate-fade-in"
+              style={{ animationDelay: `${index * 250}ms` }}
+            >
+              <Image
+                src={getProjectImage(project)}
+                alt={project.title}
+                fill
+                className="object-cover group-hover:brightness-50 transition-all duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={index < 3}
+              />
+
+              {/* Title overlay that appears on hover */}
+              <div className="absolute inset-0  bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
+                <h3 className="text-xl font-semibold text-white text-center px-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 hover:text-orange-500 cursor-pointer">
+                  {project.title}
+                </h3>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </>

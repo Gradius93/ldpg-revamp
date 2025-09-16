@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getAllProjects } from "../../data/projects";
+import { getAllPortfolioProjects } from "../../data/portfolioProjects";
 import { useEffect, useRef, useState } from "react";
 
 export default function Featured() {
-  const projects = getAllProjects().slice(0, 6); // Show first 6 projects
+  const projects = getAllPortfolioProjects().slice(0, 6); // Show first 6 projects
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -38,7 +38,7 @@ export default function Featured() {
   return (
     <div
       ref={sectionRef}
-      className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+      className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
     >
       {projects.map((project, index) => (
         <div

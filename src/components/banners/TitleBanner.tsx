@@ -1,10 +1,5 @@
 import React from "react";
-
-interface TitleBannerProps {
-  title: string;
-  backgroundImage?: string;
-  className?: string;
-}
+import { TitleBannerProps } from "@/types";
 
 export default function TitleBanner({
   title,
@@ -25,7 +20,7 @@ export default function TitleBanner({
       className={`w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white ${className}`}
       style={backgroundStyle}
     >
-      <div className="max-w-6xl h-[22vh] flex items-center mx-auto px-4">
+      <div className="max-w-7xl h-[22vh] flex items-center mx-auto px-4">
         <div className="">
           <div className="text-left">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">

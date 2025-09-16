@@ -1,27 +1,28 @@
 import Image from "next/image";
+import { Partner } from "@/types";
+
+const partners: Partner[] = [
+  {
+    name: "AAVA",
+    logo: "/images/aava.png",
+    alt: "AAVA Partner Logo",
+    url: "https://www.aava.org.uk",
+  },
+  {
+    name: "JLL",
+    logo: "/images/jll.png",
+    alt: "JLL Partner Logo",
+    url: "https://residential.jll.co.uk",
+  },
+  {
+    name: "Office SM",
+    logo: "/images/officesm.png",
+    alt: "Office SM Partner Logo",
+    url: "https://officesandm.com/",
+  },
+];
 
 export default function PartnersBanner() {
-  const partners = [
-    {
-      name: "AAVA",
-      logo: "/images/aava.png",
-      alt: "AAVA Partner Logo",
-      url: "https://www.aava.org.uk",
-    },
-    {
-      name: "JLL",
-      logo: "/images/jll.png",
-      alt: "JLL Partner Logo",
-      url: "https://residential.jll.co.uk",
-    },
-    {
-      name: "Office SM",
-      logo: "/images/officesm.png",
-      alt: "Office SM Partner Logo",
-      url: "https://officesandm.com/",
-    },
-  ];
-
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { MenuItem } from "@/types";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function Navbar() {
     setIsMenuOpen(false);
   };
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
     { href: "/projects", label: "Projects" },
@@ -24,7 +25,7 @@ export default function Navbar() {
 
   return (
     <header className="border-b border-black/10 relative">
-      <div className="max-w-6xl h-24 mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="max-w-7xl h-24 mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/" className="font-semibold text-lg">
           LDPG
         </Link>

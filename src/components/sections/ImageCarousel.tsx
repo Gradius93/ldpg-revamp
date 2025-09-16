@@ -179,7 +179,7 @@ export default function ImageCarousel({
 
       {/* Main image container */}
       <div
-        className={`relative w-full h-full max-w-6xl max-h-[80vh] mx-4 transition-all duration-300 ${
+        className={`relative w-full h-full max-w-7xl max-h-[80vh] mx-4 transition-all duration-300 ${
           shouldAnimate
             ? "transform scale-100 opacity-100"
             : "transform scale-95 opacity-0"

@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { Offer } from "@/types";
 
-const items = [
+const items: Offer[] = [
   {
     title: "Modern Homes",
     img: "https://www.ldpg.co.uk/wp-content/uploads/2023/05/icn1.png",

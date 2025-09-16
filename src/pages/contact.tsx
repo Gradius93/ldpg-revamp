@@ -1,3 +1,4 @@
+import TitleBanner from "@/components/banners/TitleBanner";
 import Head from "next/head";
 import { useState } from "react";
 
@@ -37,16 +38,54 @@ export default function Contact() {
           content="Get in touch with LDPG for your land development needs"
         />
       </Head>
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold mb-8">Contact Us</h1>
-        <p className="text-lg text-gray-600 mb-12">
-          Ready to start your land development project? Get in touch with our
-          team of experts to discuss your needs and discover how we can help
-          bring your vision to life.
-        </p>
+      <TitleBanner
+        title="Contact Us"
+        backgroundImage="/images/BannerImage.jpg"
+      />
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="text-center my-8">
+          <h1 className="text-2xl font-semibold mb-6">United Kingdom</h1>
+          <div className="max-w-3xl mx-auto justify-center space-y-6 flex flex-col md:flex-row md:gap-12 lg:gap-16">
+            <div>
+              <a
+                href="mailto:info@ldpg.com"
+                className="hover:text-blue-600 block mb-1"
+              >
+                info@ldpg.com
+              </a>
+            </div>
+            <div>
+              <a href="tel:+1234567890" className="hover:text-blue-600">
+                (123) 456-7890
+              </a>
+            </div>
+            <div>
+              <p className="text-gray-600">
+                The Studio, 6 Horn Lane, London, SE10 0RT
+              </p>
+            </div>
+          </div>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
+          {/* Contact Information */}
+          <div>
+            {/* Google Maps Embed */}
+            <div className="mb-8">
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOWTgHz-TrU_T4&q=The+Studio,+6+Horn+Lane,+London,+SE10+0RT"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="LDPG Office Location"
+                ></iframe>
+              </div>
+            </div>
+          </div>
           <div>
             <h2 className="text-2xl font-semibold mb-6">Send us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -149,64 +188,6 @@ export default function Contact() {
                 Send Message
               </button>
             </form>
-          </div>
-
-          {/* Contact Information */}
-          <div>
-            <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-lg font-medium mb-2">Office Address</h3>
-                <p className="text-gray-600">
-                  123 Development Street
-                  <br />
-                  Business District
-                  <br />
-                  City, State 12345
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-medium mb-2">Phone</h3>
-                <p className="text-gray-600">
-                  <a href="tel:+1234567890" className="hover:text-blue-600">
-                    (123) 456-7890
-                  </a>
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-medium mb-2">Email</h3>
-                <p className="text-gray-600">
-                  <a
-                    href="mailto:info@ldpg.com"
-                    className="hover:text-blue-600"
-                  >
-                    info@ldpg.com
-                  </a>
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-medium mb-2">Business Hours</h3>
-                <p className="text-gray-600">
-                  Monday - Friday: 8:00 AM - 6:00 PM
-                  <br />
-                  Saturday: 9:00 AM - 4:00 PM
-                  <br />
-                  Sunday: Closed
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 p-6 bg-blue-50 rounded-lg">
-              <h3 className="text-lg font-medium mb-2">Emergency Contact</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                For urgent project matters outside business hours:
-              </p>
-              <p className="text-gray-600">
-                <a href="tel:+1234567899" className="hover:text-blue-600">
-                  (123) 456-7899
-                </a>
-              </p>
-            </div>
           </div>
         </div>
       </div>

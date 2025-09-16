@@ -11,8 +11,8 @@ export default function About() {
         <title>About Us</title>
         <meta name="description" content="Learn more about LDPG and our team" />
       </Head>
-      <TitleBanner title="About Us" />
-      <div className="max-w-6xl mx-auto px-4 py-16">
+      <TitleBanner title="About Us" backgroundImage="/images/BannerImage.jpg" />
+      <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Image Section */}
           <div className="relative">
@@ -51,7 +51,7 @@ export default function About() {
 
             {/* Contact Section */}
             <div className="mt-8 space-y-4">
-              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+              <div className="flex flex-col sm:flex-row gap-4 items-center sm:justify-between justify-center">
                 <Link
                   href="/contact"
                   className="bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg inline-block"
@@ -85,11 +85,11 @@ export default function About() {
         </div>
 
         {/* Dividing Line */}
-        <div className="max-w-6xl mx-auto px-4 my-16">
+        <div className="max-w-7xl mx-auto px-4 my-16">
           <hr className="border-gray-300" />
         </div>
 
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <PartnersBanner />
         </div>
       </div>
