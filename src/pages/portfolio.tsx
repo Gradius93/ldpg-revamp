@@ -32,10 +32,9 @@ export default function Projects() {
       />
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center max-w-3xl mx-auto">
-          <p className="text-lg text-gray-600 mb-12">
-            Discover our portfolio of successful land development and
-            construction projects. Each project showcases our commitment to
-            quality, innovation, and sustainable development.
+          <p className="text-lg font-bold text-gray-600 mb-12">
+            Our diverse portfolio includes a wide range of projects, from
+            small-scale renovations to large-scale new builds.
           </p>
         </div>
 

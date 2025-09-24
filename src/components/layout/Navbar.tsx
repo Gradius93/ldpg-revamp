@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { MenuItem } from "@/types";
@@ -26,10 +27,7 @@ export default function Navbar() {
   return (
     <header className="border-b border-black/10 relative">
       <div className="max-w-7xl h-24 mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="font-semibold text-lg">
-          LDPG
-        </Link>
-
+        <Image src="/images/LOGO43.png" alt="LDPG" width={100} height={100} />
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-12 text-sm">
           {menuItems.map((item) => {
@@ -52,7 +50,6 @@ export default function Navbar() {
             );
           })}
         </nav>
-
         {/* Mobile Hamburger Button */}
         <button
           className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
@@ -79,10 +76,24 @@ export default function Navbar() {
 
       {/* Mobile Menu Full-Screen Modal */}
       <div
-        className={`md:hidden fixed inset-0 bg-white z-50 flex items-center justify-center transition-all duration-300 ${
+        className={`md:hidden fixed inset-0 bg-white z-50 flex flex-col items-center justify-center transition-all duration-300 ${
           isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
+        {/* Logo */}
+        <div
+          className={`absolute top-8 left-4 transition-all duration-500 delay-100 ${
+            isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          <Image
+            src="/images/LOGO43.png"
+            alt="LDPG logo"
+            width={100}
+            height={100}
+          />
+        </div>
+
         {/* Close Button */}
         <button
           className="absolute top-6 right-6 w-8 h-8 flex flex-col justify-center items-center"

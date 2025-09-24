@@ -1,4 +1,5 @@
 import TitleBanner from "@/components/banners/TitleBanner";
+import GoogleMapCard from "@/components/other/map";
 import Head from "next/head";
 import { useState } from "react";
 
@@ -71,20 +72,13 @@ export default function Contact() {
           {/* Contact Information */}
           <div>
             {/* Google Maps Embed */}
-            <div className="mb-8">
-              <div className="rounded-lg overflow-hidden shadow-lg">
-                <iframe
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOWTgHz-TrU_T4&q=The+Studio,+6+Horn+Lane,+London,+SE10+0RT"
-                  width="100%"
-                  height="300"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="LDPG Office Location"
-                ></iframe>
-              </div>
-            </div>
+            <GoogleMapCard
+              apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+              location={{
+                lat: 51.4826,
+                lng: -0.0077,
+              }}
+            />
           </div>
           <div>
             <h2 className="text-2xl font-semibold mb-6">Send us a Message</h2>

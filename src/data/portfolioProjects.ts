@@ -125,3 +125,12 @@ export function getAllPortfolioProjects(): Project[] {
 export function getPortfolioProjectSlugs(): string[] {
   return Object.keys(projects);
 }
+
+export function getPreviousProject(currentSlug: string): Project | undefined {
+  // Find the project that has the current project as its nextProject
+  const previousProjectEntry = Object.entries(projects).find(
+    ([slug, project]) => project.nextProject === currentSlug
+  );
+
+  return previousProjectEntry ? previousProjectEntry[1] : undefined;
+}

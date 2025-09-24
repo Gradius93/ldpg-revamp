@@ -56,9 +56,9 @@ export default function Hero() {
             <div className="mt-10">
               <Link
                 href="/about"
-                className="inline-block bg-black/80 hover:bg-black text-white px-8 py-4 text-sm uppercase tracking-wide font-semibold transition-all duration-300 backdrop-blur-sm border border-white/20 drop-shadow-lg"
+                className="inline-block bg-black/80 hover:bg-white text-white hover:text-black px-8 py-4 text-sm uppercase tracking-wide font-semibold transition-all duration-300 backdrop-blur-sm border border-white/20 hover:border-black/20 drop-shadow-lg rounded-lg"
               >
-                Know More —
+                Know More
               </Link>
             </div>
           </div>

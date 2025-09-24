@@ -45,7 +45,7 @@ export default function Experience() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Image - Hidden on mobile, visible on desktop */}
           <div className="hidden lg:block lg:w-1/2">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative overflow-hidden rounded-lg shadow-2xl">
               <Image
                 src="/images/main-home-1.jpg"
                 alt="LDPG Construction Experience"
@@ -59,7 +59,7 @@ export default function Experience() {
 
           {/* Text Content */}
           <div className="w-full lg:w-1/2">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 md:p-12">
               <p className="text-lg md:text-xl text-white/90 leading-relaxed">
                 We have been in the industry for over 30 years and have built a
                 reputation for delivering exceptional service and outstanding
@@ -72,7 +72,7 @@ export default function Experience() {
               className="
                  inline-flex items-center gap-3 
                  bg-white text-[#1C4E30] 
-                 px-8 py-4 rounded-full 
+                 px-8 py-4 rounded-lg 
                  font-semibold text-lg
                  hover:bg-gray-100 
                  transform hover:scale-105 
