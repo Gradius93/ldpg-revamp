@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Navigation */}
           <div className="md:col-span-1">
             <nav className="space-y-2">
@@ -59,7 +59,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Information */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 md:text-right">
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <div className="space-y-2 text-gray-300">
               <p>020 8853 3843</p>
@@ -68,24 +68,6 @@ export default function Footer() {
             </div>
           </div>
           {/* Newsletter Signup */}
-          <div className="md:col-span-1">
-            <h4 className="text-lg font-semibold mb-4">
-              Sign up to stay up to date
-            </h4>
-            <p className="text-gray-300 mb-4">
-              Subscribe to our newsletter to be in the know.
-            </p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 bg-white text-black rounded-l-md focus:outline-none"
-              />
-              <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-r-md transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Bottom Section */}
@@ -93,6 +75,7 @@ export default function Footer() {
           <p>
             Company registration number: <strong>8136879</strong>
           </p>
+          <p>Website by Seán Gray</p>
           <p>Land Development Property Group © {new Date().getFullYear()}</p>
         </div>
       </div>

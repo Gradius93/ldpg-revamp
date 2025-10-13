@@ -4,9 +4,31 @@ import { getAllPortfolioProjects } from "../../data/portfolioProjects";
 import { useEffect, useRef, useState } from "react";
 
 export default function Featured() {
-  const projects = getAllPortfolioProjects().slice(0, 6); // Show first 6 projects
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Define the IDs of projects you want to feature
+  const featuredProjectIds = [
+    "blackwall-lane-se10",
+    "langton-way-se3", // Note: corrected ID to match the data
+    "algernon-road-se13",
+    "park-view-weardale-road-se13",
+    "banning-street-se10",
+    "the-copper-apartments-blackheath-se3", // Added one more for variety
+  ];
+
+  // Cherry-pick projects by filtering the full project list
+  const allProjects = getAllPortfolioProjects();
+  const featuredProjects = allProjects.filter((project) =>
+    featuredProjectIds.includes(project.id)
+  );
+
+  // Sort featured projects to match the order of featuredProjectIds
+  const sortedFeaturedProjects = featuredProjectIds
+    .map((id) => featuredProjects.find((project) => project.id === id))
+    .filter(
+      (project): project is NonNullable<typeof project> => project !== undefined
+    ); // Remove any undefined entries
 
   // Define varying heights for masonry effect
   const cardHeights = [
@@ -40,7 +62,7 @@ export default function Featured() {
       ref={sectionRef}
       className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
     >
-      {projects.map((project, index) => (
+      {sortedFeaturedProjects.map((project, index) => (
         <div
           key={project.id}
           className={`group transition-all duration-700 transform hover:-translate-y-3 hover:rotate-1 ${
@@ -70,7 +92,7 @@ export default function Featured() {
                 src={project.images?.[0] || "/images/main-home-1.jpg"}
                 alt={project.title}
                 fill
-                className="object-cover object-center transition-all duration-700 group-hover:scale-110 group-hover:brightness-75"
+                className="object-cover object-bottom transition-all duration-700 group-hover:scale-110 group-hover:brightness-75"
                 style={{
                   display: "block",
                   position: "absolute",

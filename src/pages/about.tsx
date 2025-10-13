@@ -1,24 +1,62 @@
 import TitleBanner from "@/components/banners/TitleBanner";
 import PartnersBanner from "@/components/banners/PartnersBanner";
-import Head from "next/head";
+import SEOHead from "@/components/SEOHead";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function About() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    mainEntity: {
+      "@type": "RealEstateAgent",
+      name: "LDPG - Land Development Property Group",
+      foundingDate: "2013-07",
+      description:
+        "Founded in July 2013 by Sudarshan and Navneet Vij, LDPG unites the resources of Mulberry Building Developers and Wyberton Homes Limited, focusing on high-quality residential development in South East London.",
+      founder: [
+        {
+          "@type": "Person",
+          name: "Sudarshan Vij",
+        },
+        {
+          "@type": "Person",
+          name: "Navneet Vij",
+        },
+      ],
+      areaServed: {
+        "@type": "Place",
+        name: "South East London",
+      },
+      serviceType: [
+        "High quality residential development",
+        "Derelict building renovation",
+        "Land development",
+        "Contemporary luxury homes",
+        "Apartment development",
+        "Commercial properties",
+      ],
+    },
+  };
+
   return (
     <>
-      <Head>
-        <title>About Us</title>
-        <meta name="description" content="Learn more about LDPG and our team" />
-      </Head>
+      <SEOHead
+        title="About LDPG - 30+ Years of Excellence in Property Development"
+        description="Founded in 2013 by Sudarshan and Navneet Vij, LDPG has over 30 years of industry experience, specializing in transforming derelict buildings into luxury homes in South East London."
+        canonical="/about"
+        keywords="LDPG history, property developers London, Sudarshan Vij, Navneet Vij, Mulberry Building Developers, Wyberton Homes, South East London development"
+        ogImage="/images/langton-way.jpg"
+        structuredData={structuredData}
+      />
       <TitleBanner title="About Us" backgroundImage="/images/BannerImage.jpg" />
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Image Section */}
           <div className="relative">
             <Image
-              src="/images/main-home-1.jpg"
-              alt="LDPG Development Project"
+              src="/images/langton-way.jpg"
+              alt="LDPG Langton Way development project - modern residential building in South East London"
               width={600}
               height={400}
               className="rounded-lg shadow-lg object-cover w-full h-[400px]"

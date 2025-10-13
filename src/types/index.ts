@@ -5,9 +5,11 @@ export interface Project {
   description: string;
   status: string;
   completed: string;
+  thumbnailImage?: string;
   images?: string[];
   nextProject?: string;
   slug: string;
+  imageAmend?: boolean;
 }
 
 export interface Offer {

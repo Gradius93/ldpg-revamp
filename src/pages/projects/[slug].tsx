@@ -1,14 +1,14 @@
 import Link from "next/link";
-import Head from "next/head";
+import SEOHead from "@/components/SEOHead";
 import Image from "next/image";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useState } from "react";
 import {
   getProject,
-  getPortfolioProjectSlugs,
   getPreviousProject,
+  getProjectSlugs,
   projects,
-} from "@/data/portfolioProjects";
+} from "@/data/currentProjects";
 import { Project } from "@/types";
 import ImageCarousel from "@/components/sections/ImageCarousel";
 
@@ -35,15 +35,39 @@ export default function ProjectPage({ project }: ProjectPageProps) {
     setIsCarouselOpen(false);
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateProject",
+    name: project.title,
+    description: project.description,
+    location: {
+      "@type": "Place",
+      name: project.location,
+    },
+    developer: {
+      "@type": "RealEstateAgent",
+      name: "LDPG - Land Development Property Group",
+    },
+    status: project.status,
+    dateCompleted: project.completed,
+    image: project.images?.map((img) => `https://ldpg.co.uk${img}`) || [],
+    url: `https://ldpg.co.uk/projects/${project.slug}`,
+  };
+
   return (
     <>
-      <Head>
-        <title>{project.title} - LDPG</title>
-        <meta name="description" content={project.description} />
-      </Head>
+      <SEOHead
+        title={`${project.title} - Current Project by LDPG`}
+        description={`${project.description} Located in ${project.location}. Status: ${project.status}. Completed: ${project.completed}.`}
+        canonical={`/projects/${project.slug}`}
+        keywords={`${project.title}, ${project.location}, property development, LDPG project, ${project.status}`}
+        ogImage={project.images?.[0] || "/images/main-home-1.jpg"}
+        ogType="article"
+        structuredData={structuredData}
+      />
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <h1 className="text-3xl md:text-4xl font-light mb-8 text-black">
+        <h1 className="text-3xl md:text-4xl font-light mb-8 text-black font-weight-bold">
           {project.title}
         </h1>
         {/* Image Gallery */}
@@ -56,9 +80,9 @@ export default function ProjectPage({ project }: ProjectPageProps) {
             >
               <Image
                 src={project.images[0]}
-                alt={`${project.title} - Main Image`}
+                alt={`${project.title} property development project in ${project.location} - main exterior view`}
                 fill
-                className="object-cover"
+                className="object-cover object-bottom"
                 sizes="100vw"
               />
             </div>
@@ -74,9 +98,11 @@ export default function ProjectPage({ project }: ProjectPageProps) {
                   >
                     <Image
                       src={image}
-                      alt={`${project.title} - Image ${index + 2}`}
+                      alt={`${project.title} development in ${
+                        project.location
+                      } - view ${index + 2}`}
                       fill
-                      className="object-cover"
+                      className="object-cover object-bottom"
                       sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     />
                   </div>
@@ -88,33 +114,35 @@ export default function ProjectPage({ project }: ProjectPageProps) {
 
         {/* Project Details - Full Width */}
         <div className="mb-12">
-          <div className="space-y-4">
-            <div className="flex flex-row justify-between items-baseline">
-              <h5 className="text-sm font-semibold text-gray-800 uppercase tracking-wide">
+          <div className="space-y-8">
+            <div className="flex flex-col justify-between items-start">
+              <h5 className="text-sm font-semibold text-gray-800 uppercase tracking-wide mb-2">
                 Location
               </h5>
-              <p className="text-gray-700 text-right">{project.location}</p>
+              <p className="text-gray-700 ml-8">{project.location}</p>
             </div>
 
-            <div className="flex flex-row justify-between items-baseline">
-              <h5 className="text-sm font-semibold text-gray-800 uppercase tracking-wide">
+            <div className="flex flex-col justify-between items-start">
+              <h5 className="text-sm font-semibold text-gray-800 uppercase tracking-wide mb-2">
                 Project
               </h5>
-              <p className="text-gray-700 text-right">{project.description}</p>
+              <p className="text-gray-700 md:max-w-[75%] ml-8">
+                {project.description}
+              </p>
             </div>
 
-            <div className="flex flex-row justify-between items-baseline">
-              <h5 className="text-sm font-semibold text-gray-800 uppercase tracking-wide">
+            <div className="flex flex-col justify-between items-start">
+              <h5 className="text-sm font-semibold text-gray-800 uppercase tracking-wide mb-2">
                 Status
               </h5>
-              <p className="text-gray-700 text-right">{project.status}</p>
+              <p className="text-gray-700 ml-8">{project.status}</p>
             </div>
 
-            <div className="flex flex-row justify-between items-baseline">
-              <h5 className="text-sm font-semibold text-gray-800 uppercase tracking-wide">
+            <div className="flex flex-col justify-between items-start">
+              <h5 className="text-sm font-semibold text-gray-800 uppercase tracking-wide mb-2">
                 Completed
               </h5>
-              <p className="text-gray-700 text-right">{project.completed}</p>
+              <p className="text-gray-700 ml-8">{project.completed}</p>
             </div>
           </div>
         </div>
@@ -168,7 +196,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = getPortfolioProjectSlugs();
+  const slugs = getProjectSlugs();
   const paths = slugs.map((slug) => ({
     params: { slug },
   }));

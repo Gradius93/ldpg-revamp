@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEOHead from "@/components/SEOHead";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllPortfolioProjects } from "@/data/portfolioProjects";
@@ -17,15 +17,39 @@ export default function Projects() {
     return "/images/main-home-1.jpg";
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Portfolio - LDPG Completed Projects",
+    description:
+      "Explore LDPG's portfolio of completed property development projects in South East London",
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: projects.length,
+      itemListElement: projects.map((project, index) => ({
+        "@type": "RealEstateProject",
+        position: index + 1,
+        name: project.title,
+        description: project.description,
+        location: {
+          "@type": "Place",
+          name: project.location,
+        },
+        url: `https://ldpg.co.uk/portfolio/${project.slug}`,
+        image: getProjectImage(project),
+      })),
+    },
+  };
+
   return (
     <>
-      <Head>
-        <title>Portfolio</title>
-        <meta
-          name="description"
-          content="Explore our portfolio of completed projects"
-        />
-      </Head>
+      <SEOHead
+        title="Portfolio - LDPG Completed Property Development Projects"
+        description="View LDPG's portfolio of completed property developments. From small-scale renovations to large-scale new builds in South East London."
+        canonical="/portfolio"
+        keywords="LDPG portfolio, completed projects, property development portfolio, South East London developments, residential projects"
+        structuredData={structuredData}
+      />
       <TitleBanner
         title="Portfolio"
         backgroundImage="/images/BannerImage.jpg"
@@ -42,7 +66,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <Link
               key={project.id}
-              href={`/projects/${project.slug}`}
+              href={`/portfolio/${project.slug}`}
               className="relative bg-white shadow-md rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300 group aspect-[4/3] opacity-0 animate-fade-in"
               style={{ animationDelay: `${index * 250}ms` }}
             >
@@ -50,7 +74,9 @@ export default function Projects() {
                 src={getProjectImage(project)}
                 alt={project.title}
                 fill
-                className="object-cover group-hover:brightness-50 transition-all duration-300"
+                className={`object-cover group-hover:brightness-50 transition-all duration-300 ${
+                  !project.imageAmend && "object-bottom"
+                }`}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 priority={index < 3}
               />

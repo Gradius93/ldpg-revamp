@@ -22,24 +22,30 @@ export const projects: Record<string, Project> = {
     slug: "the-point-wemys-road-se3",
     title: "THE POINT, WEMYS ROAD, SE3",
     location: "Wemys Road, SE3",
-    description:
-      "Modern residential development with contemporary design and luxury finishes.",
+    description: "14 modern 1 and 2 bedroom luxury apartments.",
     status: "Available",
     completed: "2024",
     nextProject: "177-lewisham-way-se14",
-    images: ["/images/main-home-1.jpg"],
+    images: [
+      "/images/the-point.jpg",
+      "/images/the-point-2.jpg",
+      "/images/the-point-3.jpg",
+    ],
   },
   "177-lewisham-way-se14": {
     id: "177-lewisham-way-se14",
     slug: "177-lewisham-way-se14",
     title: "177 Lewisham Way SE14",
     location: "177 Lewisham Way, SE14",
-    description:
-      "Contemporary residential development featuring modern apartments with high-end specifications.",
+    description: "Fourteen modern one and two bedroom apartments.",
     status: "Completed",
     completed: "2023",
     nextProject: "algernon-road-se13",
-    images: ["/images/main-home-2.jpg"],
+    images: [
+      "/images/lewisham-way.jpg",
+      "/images/lewisham-way-2.jpg",
+      "/images/lewisham-way-3.jpg",
+    ],
   },
   "algernon-road-se13": {
     id: "algernon-road-se13",
@@ -47,11 +53,15 @@ export const projects: Record<string, Project> = {
     title: "Algernon Road SE13",
     location: "Algernon Road, SE13",
     description:
-      "Stylish residential development with innovative design and premium finishes.",
-    status: "Completed",
+      "Fourteen contemporary residential apartments in the heart of an area of Lewisham currently undergoing wholesale regeneration. Close to Lewisham DLR and train links.",
+    status: "Sold to Housing Association Client",
     completed: "2022",
     nextProject: "park-view-weardale-road-se13",
-    images: ["/images/main-home-3.jpg"],
+    images: [
+      "/images/algernon-road.jpg",
+      "/images/algernon-road-2.jpg",
+      "/images/algernon-road-3.jpg",
+    ],
   },
   "park-view-weardale-road-se13": {
     id: "park-view-weardale-road-se13",
@@ -63,7 +73,11 @@ export const projects: Record<string, Project> = {
     status: "All Sold",
     completed: "2021",
     nextProject: "banning-street-se10",
-    images: ["/images/1-aberdeen-terrace-2.jpg"],
+    images: [
+      "/images/parkview-1.jpg",
+      "/images/parkview-2.jpg",
+      "/images/parkview-3.jpg",
+    ],
   },
   "banning-street-se10": {
     id: "banning-street-se10",
@@ -75,7 +89,8 @@ export const projects: Record<string, Project> = {
     status: "Available",
     completed: "2023",
     nextProject: "blackwall-lane-se10",
-    images: ["/images/1-aberdeen-terrace-3.jpg"],
+    images: ["/images/banning-street-1.jpeg", "/images/banning-street-2.jpeg"],
+    imageAmend: true,
   },
   "blackwall-lane-se10": {
     id: "blackwall-lane-se10",
@@ -87,7 +102,11 @@ export const projects: Record<string, Project> = {
     status: "In Progress",
     completed: "2024",
     nextProject: "vista-buildings-se10",
-    images: ["/images/main-home-1.jpg"],
+    images: [
+      "/images/blackwall-1.jpg",
+      "/images/blackwall-2.jpeg",
+      "/images/blackwall-3.jpeg",
+    ],
   },
   "vista-buildings-se10": {
     id: "vista-buildings-se10",
@@ -99,22 +118,134 @@ export const projects: Record<string, Project> = {
     status: "Completed",
     completed: "2022",
     nextProject: "aberdeen-terrace-se3-2",
-    images: ["/images/main-home-2.jpg"],
+    images: [
+      "/images/vista-building-1.jpeg",
+      "/images/vista-building-2.jpeg",
+      "/images/vista-building-3.jpeg",
+    ],
+    imageAmend: true,
   },
-  "aberdeen-terrace-se3-2": {
-    id: "aberdeen-terrace-se3-2",
-    slug: "aberdeen-terrace-se3-2",
-    title: "ABERDEEN TERRACE, SE3",
-    location: "Aberdeen Terrace, SE3",
+  "mill-apartments": {
+    id: "mill-apartments",
+    slug: "mill-apartments",
+    title: "Mill Apartments",
+    location: "Mill Road, SE13",
     description:
       "Additional development on Aberdeen Terrace featuring luxury residential units.",
     status: "Planning",
     completed: "2025",
-    images: ["/images/main-home-3.jpg"],
+    images: [
+      "/images/mill-apartments-1.jpg",
+      "/images/mill-apartments-2.jpg",
+      "/images/mill-apartments-3.jpg",
+      "/images/mill-apartments-4.jpg",
+      "/images/mill-apartments-5.jpg",
+    ],
+  },
+  "woodrow-se13": {
+    id: "woodrow-se13",
+    slug: "woodrow-se13",
+    title: "Woodrow SE13",
+    location: "Woodrow, SE13",
+    description:
+      "Additional development on Aberdeen Terrace featuring luxury residential units.",
+    status: "Planning",
+    completed: "2025",
+    images: [
+      "/images/woodrow-1.jpg",
+      "/images/woodrow-2.jpg",
+      "/images/woodrow-3.jpg",
+      "/images/woodrow-4.jpg",
+      "/images/woodrow-5.jpg",
+      "/images/woodrow-6.jpeg",
+    ],
+  },
+  "court-road-se9": {
+    id: "court-road-se9",
+    slug: "court-road-se9",
+    title: "Court Road SE9",
+    location: "Court Road, SE9",
+    description:
+      "Additional development on Aberdeen Terrace featuring luxury residential units.",
+    status: "Planning",
+    completed: "2025",
+    images: [
+      "/images/court-road-1.jpeg",
+      "/images/court-road-2.jpg",
+      "/images/court-road-3.jpg",
+      "/images/court-road-4.jpg",
+      "/images/court-road-5.jpg",
+    ],
+  },
+  "langton-way-se3": {
+    id: "langton-way-se3",
+    slug: "langton-way-se3",
+    title: "Langton Way SE3",
+    location: "Langton Way, SE3",
+    description:
+      "Additional development on Aberdeen Terrace featuring luxury residential units.",
+    status: "Planning",
+    completed: "2025",
+    images: ["/images/langton-way.jpg"],
+  },
+  "pleasaunce-mansions-se10": {
+    id: "pleasaunce-mansions-se10",
+    slug: "pleasaunce-mansions-se10",
+    title: "Pleasaunce Mansions SE10",
+    location: "Pleasaunce Mansions, SE10",
+    description:
+      "Additional development on Aberdeen Terrace featuring luxury residential units.",
+    status: "Planning",
+    completed: "2025",
+    images: ["/images/pleasaunce-1.jpeg", "/images/pleasaunce-2.jpeg"],
+    imageAmend: true,
+  },
+  "282-baring-road-se12": {
+    id: "282-baring-road-se12",
+    slug: "282-baring-road-se12",
+    title: "282 Baring Road SE12",
+    location: "282 Baring Road, SE12",
+    description:
+      "Additional development on Aberdeen Terrace featuring luxury residential units.",
+    status: "Planning",
+    completed: "2025",
+    images: ["/images/Barring-road.jpeg"],
+    imageAmend: true,
+  },
+  "st-peters-court-se12": {
+    id: "st-peters-court-se12",
+    slug: "st-peters-court-se12",
+    title: "St Peters Court SE12",
+    location: "St Peters Court, SE12",
+    description:
+      "Additional development on Aberdeen Terrace featuring luxury residential units.",
+    status: "Planning",
+    completed: "2025",
+    images: [
+      "/images/st-peters-court-1.jpg",
+      "/images/st-peters-court-2.jpg",
+      "/images/st-peters-court-3.jpg",
+    ],
+  },
+  "the-copper-apartments-blackheath-se3": {
+    id: "the-copper-apartments-blackheath-se3",
+    slug: "the-copper-apartments-blackheath-se3",
+    title: "The Copper Apartments, Blackheath SE3",
+    location: "The Copper Apartments, Blackheath SE3",
+    description:
+      "Additional development on Aberdeen Terrace featuring luxury residential units.",
+    status: "Planning",
+    completed: "2025",
+    images: [
+      "/images/copper-apartments-1.jpg",
+      "/images/copper-apartments-2.jpg",
+      "/images/copper-apartments-3.png",
+    ],
+    imageAmend: true,
   },
 };
 
-export function getProject(slug: string): Project | undefined {
+export function getPortfolioProject(slug: string): Project | undefined {
   return projects[slug];
 }
 
@@ -126,7 +257,9 @@ export function getPortfolioProjectSlugs(): string[] {
   return Object.keys(projects);
 }
 
-export function getPreviousProject(currentSlug: string): Project | undefined {
+export function getPreviousPortfolioProject(
+  currentSlug: string
+): Project | undefined {
   // Find the project that has the current project as its nextProject
   const previousProjectEntry = Object.entries(projects).find(
     ([slug, project]) => project.nextProject === currentSlug

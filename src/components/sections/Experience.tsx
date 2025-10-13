@@ -42,7 +42,7 @@ export default function Experience() {
           Experience & Expertise
         </h2>
 
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Image - Hidden on mobile, visible on desktop */}
           <div className="hidden lg:block lg:w-1/2">
             <div className="relative overflow-hidden rounded-lg shadow-2xl">

@@ -1,6 +1,6 @@
 import TitleBanner from "@/components/banners/TitleBanner";
 import GoogleMapCard from "@/components/other/map";
-import Head from "next/head";
+import SEOHead from "@/components/SEOHead";
 import { useState } from "react";
 
 export default function Contact() {
@@ -11,6 +11,12 @@ export default function Contact() {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+  const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -23,41 +29,105 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! We will get back to you soon.");
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "Thank you for your message! We will get back to you soon.",
+        });
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        const errorData = await response.json();
+        setSubmitStatus({
+          type: "error",
+          message:
+            errorData.message || "Failed to send message. Please try again.",
+        });
+      }
+    } catch {
+      setSubmitStatus({
+        type: "error",
+        message: "Network error. Please check your connection and try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    mainEntity: {
+      "@type": "RealEstateAgent",
+      name: "LDPG - Land Development Property Group",
+      telephone: "020 8853 3843",
+      email: "info@ldpg.com",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "The Studio, 6 Horn Lane",
+        addressLocality: "London",
+        postalCode: "SE10 0RT",
+        addressCountry: "GB",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 51.4879718844022,
+        longitude: 0.017832782472396915,
+      },
+      openingHours: "Mo-Fr 09:00-17:00",
+    },
   };
 
   return (
     <>
-      <Head>
-        <title>Contact Us - LDPG</title>
-        <meta
-          name="description"
-          content="Get in touch with LDPG for your land development needs"
-        />
-      </Head>
+      <SEOHead
+        title="Contact LDPG - Get in Touch for Property Development Services"
+        description="Contact LDPG for land development, property development, and consultation services. Located in London SE10. Call 020 8853 3843 or email info@ldpg.com"
+        canonical="/contact"
+        keywords="contact LDPG, property development consultation, land development services, London property developers, SE10"
+        structuredData={structuredData}
+      />
       <TitleBanner
         title="Contact Us"
         backgroundImage="/images/BannerImage.jpg"
       />
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center my-8">
-          <h1 className="text-2xl font-semibold mb-6">United Kingdom</h1>
+          <h1 className="text-2xl font-semibold mb-6 text-[var(--color-sub-green)]">
+            United Kingdom
+          </h1>
           <div className="max-w-3xl mx-auto justify-center space-y-6 flex flex-col md:flex-row md:gap-12 lg:gap-16">
             <div>
               <a
-                href="mailto:info@ldpg.com"
+                href="mailto:contact@ldpg.co.uk"
                 className="hover:text-blue-600 block mb-1"
               >
-                info@ldpg.com
+                contact@ldpg.co.uk
               </a>
             </div>
             <div>
-              <a href="tel:+1234567890" className="hover:text-blue-600">
-                (123) 456-7890
+              <a href="tel:+442088533843" className="hover:text-blue-600">
+                020 8853 3843
               </a>
             </div>
             <div>
@@ -73,15 +143,31 @@ export default function Contact() {
           <div>
             {/* Google Maps Embed */}
             <GoogleMapCard
-              apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+              apiKey={API_KEY}
               location={{
-                lat: 51.4826,
-                lng: -0.0077,
+                lat: 51.4879718844022,
+                lng: 0.017832782472396915,
               }}
             />
           </div>
           <div>
-            <h2 className="text-2xl font-semibold mb-6">Send us a Message</h2>
+            <h2 className="text-2xl font-semibold mb-6 text-[var(--color-sub-green)]">
+              Send us a Message
+            </h2>
+
+            {/* Status Messages */}
+            {submitStatus.type && (
+              <div
+                className={`mb-6 p-4 rounded-md ${
+                  submitStatus.type === "success"
+                    ? "bg-green-50 text-green-800 border border-green-200"
+                    : "bg-red-50 text-red-800 border border-red-200"
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -177,9 +263,15 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium"
+                aria-label="Send Message"
+                disabled={isSubmitting}
+                className={`w-full py-3 px-6 rounded-md font-medium transition-colors ${
+                  isSubmitting
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-blue-600 hover:bg-blue-700"
+                } text-white`}
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>

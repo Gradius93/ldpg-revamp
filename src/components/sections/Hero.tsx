@@ -6,15 +6,7 @@ import Link from "next/link";
 const heroImages: HeroImage[] = [
   {
     src: "/images/main-home-1.jpg",
-    alt: "LDPG luxury patio development",
-  },
-  {
-    src: "/images/main-home-2.jpg",
-    alt: "LDPG house front exterior",
-  },
-  {
-    src: "/images/main-home-3.jpg",
-    alt: "LDPG luxury kitchen interior",
+    alt: "LDPG luxury residential development with modern patio and landscaping in South East London",
   },
 ];
 

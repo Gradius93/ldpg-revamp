@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEOHead from "@/components/SEOHead";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllProjects } from "@/data/currentProjects";
@@ -10,6 +10,9 @@ export default function Projects() {
 
   // Helper function to get project image or fallback
   const getProjectImage = (project: Project) => {
+    if (project.thumbnailImage) {
+      return project.thumbnailImage;
+    }
     if (project.images && project.images.length > 0) {
       return project.images[0];
     }
@@ -17,15 +20,39 @@ export default function Projects() {
     return "/images/main-home-1.jpg";
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Current Projects - LDPG",
+    description:
+      "Explore LDPG's current property development projects in South East London",
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: projects.length,
+      itemListElement: projects.map((project, index) => ({
+        "@type": "RealEstateProject",
+        position: index + 1,
+        name: project.title,
+        description: project.description,
+        location: {
+          "@type": "Place",
+          name: project.location,
+        },
+        url: `https://ldpg.co.uk/projects/${project.slug}`,
+        image: getProjectImage(project),
+      })),
+    },
+  };
+
   return (
     <>
-      <Head>
-        <title>Portfolio</title>
-        <meta
-          name="description"
-          content="Explore our portfolio of completed projects"
-        />
-      </Head>
+      <SEOHead
+        title="Current Projects - LDPG Property Developments in South East London"
+        description="Discover LDPG's current property development projects. High-quality residential developments transforming South East London communities."
+        canonical="/projects"
+        keywords="current projects, property development London, residential development, LDPG projects, South East London construction"
+        structuredData={structuredData}
+      />
       <TitleBanner
         title="Current Projects"
         backgroundImage="/images/BannerImage.jpg"
@@ -54,7 +81,7 @@ export default function Projects() {
                     src={getProjectImage(project)}
                     alt={project.title}
                     fill
-                    className="object-cover transition-all duration-700 group-hover:scale-105"
+                    className="object-cover object-bottom transition-all duration-700 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
 
@@ -98,7 +125,7 @@ export default function Projects() {
 
                   {/* Action Row */}
                   <div className="flex items-center justify-between pt-2">
-                    <div className="text-xs text-gray-400 font-medium uppercase tracking-wider">
+                    <div className="text-xs text-gray-900 font-medium uppercase tracking-wider">
                       View Project
                     </div>
                     <div className="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-orange-500 flex items-center justify-center transition-all duration-300">
