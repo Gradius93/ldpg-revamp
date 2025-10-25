@@ -1,79 +1,12 @@
+// Your contact form component
+"use client";
+
+import React, { useState } from "react";
 import TitleBanner from "@/components/banners/TitleBanner";
 import GoogleMapCard from "@/components/other/map";
 import SEOHead from "@/components/SEOHead";
-import { useState } from "react";
 
-export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: "success" | "error" | null;
-    message: string;
-  }>({ type: null, message: "" });
-  const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: "" });
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitStatus({
-          type: "success",
-          message: "Thank you for your message! We will get back to you soon.",
-        });
-        // Reset form
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        const errorData = await response.json();
-        setSubmitStatus({
-          type: "error",
-          message:
-            errorData.message || "Failed to send message. Please try again.",
-        });
-      }
-    } catch {
-      setSubmitStatus({
-        type: "error",
-        message: "Network error. Please check your connection and try again.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
+export default function ContactForm() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -96,6 +29,44 @@ export default function Contact() {
       },
       openingHours: "Mo-Fr 09:00-17:00",
     },
+  };
+  const [status, setStatus] = useState("");
+  const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("Sending...");
+
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get("email");
+    const message = formData.get("message");
+
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, message }),
+      });
+
+      if (response.ok) {
+        setStatus("Email sent successfully! 🎉");
+        event.currentTarget.reset(); // Clear form fields
+      } else {
+        const errorData = await response.json();
+        setStatus(
+          `Error: ${
+            errorData.error?.message ||
+            errorData.error ||
+            "Failed to send email"
+          }`
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setStatus("An unexpected error occurred.");
+    }
   };
 
   return (
@@ -155,16 +126,15 @@ export default function Contact() {
               Send us a Message
             </h2>
 
-            {/* Status Messages */}
-            {submitStatus.type && (
+            {status !== "" && (
               <div
                 className={`mb-6 p-4 rounded-md ${
-                  submitStatus.type === "success"
+                  status === "Email sent successfully! 🎉"
                     ? "bg-green-50 text-green-800 border border-green-200"
                     : "bg-red-50 text-red-800 border border-red-200"
                 }`}
               >
-                {submitStatus.message}
+                {status}
               </div>
             )}
 
@@ -182,8 +152,6 @@ export default function Contact() {
                     id="name"
                     name="name"
                     required
-                    value={formData.name}
-                    onChange={handleChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -199,8 +167,6 @@ export default function Contact() {
                     id="email"
                     name="email"
                     required
-                    value={formData.email}
-                    onChange={handleChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -216,8 +182,6 @@ export default function Contact() {
                   type="tel"
                   id="phone"
                   name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
@@ -232,8 +196,6 @@ export default function Contact() {
                   id="subject"
                   name="subject"
                   required
-                  value={formData.subject}
-                  onChange={handleChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">Select a subject</option>
@@ -255,8 +217,6 @@ export default function Contact() {
                   name="message"
                   required
                   rows={6}
-                  value={formData.message}
-                  onChange={handleChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Tell us about your project..."
                 ></textarea>
@@ -264,17 +224,37 @@ export default function Contact() {
               <button
                 type="submit"
                 aria-label="Send Message"
-                disabled={isSubmitting}
+                disabled={status === "Sending..."}
                 className={`w-full py-3 px-6 rounded-md font-medium transition-colors ${
-                  isSubmitting
+                  status
                     ? "bg-gray-400 cursor-not-allowed"
                     : "bg-blue-600 hover:bg-blue-700"
                 } text-white`}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {status ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
+          {/* <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows={5}
+              required
+            />
+
+            <button type="submit" disabled={status === "Sending..."}>
+              {status === "Sending..." ? "Sending..." : "Send Message"}
+            </button>
+
+            {status && <p>{status}</p>}
+          </form> */}
         </div>
       </div>
     </>
