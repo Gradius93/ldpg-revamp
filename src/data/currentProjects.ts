@@ -24,7 +24,7 @@ export const projects: Record<string, Project> = {
     status: "Planning",
     completed: "2025",
     nextProject: "manor-park",
-    thumbnailImage: "/images/Weardale-cropped.jpg",
+    thumbnailImage: "/images/weardale-cropped.jpg",
     images: ["/images/Weardale-Road1.jpg"],
   },
   "manor-park": {
