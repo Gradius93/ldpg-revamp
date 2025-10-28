@@ -12,7 +12,7 @@ module.exports = {
 
     // Add current projects
     try {
-      const { getAllProjects } = require("./src/data/currentProjects");
+      const { getAllProjects } = await import("./src/data/currentProjects");
       const projects = getAllProjects();
       projects.forEach((project) => {
         result.push({
@@ -31,9 +31,9 @@ module.exports = {
 
     // Add portfolio projects
     try {
-      const {
-        getAllPortfolioProjects,
-      } = require("./src/data/portfolioProjects");
+      const { getAllPortfolioProjects } = await import(
+        "./src/data/portfolioProjects"
+      );
       const portfolioProjects = getAllPortfolioProjects();
       portfolioProjects.forEach((project) => {
         result.push({

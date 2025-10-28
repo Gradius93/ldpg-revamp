@@ -221,6 +221,7 @@ const GoogleMapCard: React.FC<GoogleMapCardProps> = ({
 
   const onLoad = useCallback((_map: google.maps.Map) => {
     // Map is loaded and ready to use
+    console.log(_map, "Map loaded");
   }, []);
 
   const onUnmount = useCallback(() => {

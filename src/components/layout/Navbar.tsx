@@ -25,9 +25,11 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="border-b border-black/10 relative">
+    <header className="sticky top-0 z-50 bg-white border-b border-black/10">
       <div className="max-w-7xl h-24 mx-auto px-4 py-4 flex items-center justify-between">
-        <Image src="/images/LOGO43.png" alt="LDPG" width={100} height={100} />
+        <Link href="/">
+          <Image src="/images/LOGO43.png" alt="LDPG" width={100} height={100} />
+        </Link>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-12 text-sm">
           {menuItems.map((item) => {
