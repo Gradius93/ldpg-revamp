@@ -7,19 +7,19 @@ import { Offer } from "@/types";
 const items: Offer[] = [
   {
     title: "Modern Homes",
-    img: "https://www.ldpg.co.uk/wp-content/uploads/2023/05/icn1.png",
-    sideImage: "/images/Weardale-Road1.jpg", // Add your side image URL here
+    img: "/icons/icon-1-houses.png",
+    sideImage: "/images/weardale-cropped.jpg", // Add your side image URL here
     desc: "LDPG is known for its building of outstanding new homes. Our construction team exacts the high standards we maintain across all our properties. We take pride in the exemplary workmanship demonstrated by our team throughout the build process. The outcome; exceptional modern homes ideal for every family.",
   },
   {
     title: "Luxury Apartments",
-    img: "https://www.ldpg.co.uk/wp-content/uploads/2023/05/icn2.png",
-    sideImage: "/images/greenwich-park-street-1.jpg", // Add your side image URL here
+    img: "/icons/icon-2-stairs.png",
+    sideImage: "/images/greenwich-park-cropped.jpg", // Add your side image URL here
     desc: "At LDPG, we build luxury residential apartments, passionate about the creation of comfortable and contemporary living spaces.  Our skilled workforce ensures maintenance of the highest standards. Our apartments make for stylish and efficient living spaces with exquisite design.",
   },
   {
     title: "Innovative Design",
-    img: "https://www.ldpg.co.uk/wp-content/uploads/2023/05/icn3.png",
+    img: "/icons/icon-3-house-house.png",
     sideImage: "/images/algernon-road-3.jpg", // Add your side image URL here
     desc: "We collaborate with local architects to deliver projects that fit the local area and environment while also achieving innovative design and use of space. For a closer look at our previous builds, please see our portfolio. ",
   },
@@ -86,8 +86,8 @@ export default function Offers() {
                 <Image
                   src={item.img}
                   alt={item.title}
-                  fill
                   className="object-contain"
+                  fill
                 />
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function Offers() {
 
           {/* Side Image Outside Main Div */}
           <div className="flex-1">
-            <div className="h-full w-full md:h-80 relative bg-gray-100 rounded-lg flex justify-center">
+            <div className="h-64 w-full md:h-80 relative bg-gray-100 rounded-lg flex justify-center">
               <Image
                 src={item.sideImage || ""}
                 alt={`${item.title} side image`}
