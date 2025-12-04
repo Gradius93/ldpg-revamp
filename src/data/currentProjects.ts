@@ -72,7 +72,6 @@ export const projects: Record<string, Project> = {
       "Construction is now underway on two four-bedroom houses on Manor Park Road. The development features a distinctive modern design with natural stone detailing on the façades. Located in Lewisham, the site offers excellent connections, being close to Hither Green Station and several local parks. Completion is expected by late 2026.",
     status: "Construction",
     completed: "2026",
-    nextProject: "1-aberdeen-terrace-se3",
 
     images: ["/images/Manor-Park-1.jpg", "/images/Manor-Park-2.jpg"],
   },

@@ -3,6 +3,7 @@ import SEOHead from "@/components/SEOHead";
 import Image from "next/image";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import {
   getPortfolioProject,
   getPortfolioProjectSlugs,
@@ -19,6 +20,8 @@ interface ProjectPageProps {
 export default function ProjectPage({ portfolioProject }: ProjectPageProps) {
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const router = useRouter();
+  const hideNavigation = router.query.from === "featured";
 
   if (!portfolioProject) {
     return <div>Project not found</div>;
@@ -155,37 +158,38 @@ export default function ProjectPage({ portfolioProject }: ProjectPageProps) {
         </div>
 
         {/* Project Navigation */}
-        {(previousProject || portfolioProject.nextProject) && (
-          <div className="mt-16 pt-8 border-t border-gray-200">
-            <div className="flex justify-between items-center">
-              {/* Previous Project */}
-              <div>
-                {previousProject ? (
-                  <Link
-                    href={`/projects/${previousProject.slug}`}
-                    className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors text-sm font-medium"
-                  >
-                    ← Previous: {previousProject.title}
-                  </Link>
-                ) : (
-                  <div></div>
-                )}
-              </div>
+        {!hideNavigation &&
+          (previousProject || portfolioProject.nextProject) && (
+            <div className="mt-16 pt-8 border-t border-gray-200">
+              <div className="flex justify-between items-center">
+                {/* Previous Project */}
+                <div>
+                  {previousProject ? (
+                    <Link
+                      href={`/projects/${previousProject.slug}`}
+                      className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors text-sm font-medium"
+                    >
+                      ← Previous: {previousProject.title}
+                    </Link>
+                  ) : (
+                    <div></div>
+                  )}
+                </div>
 
-              {/* Next Project */}
-              <div>
-                {portfolioProject.nextProject && (
-                  <Link
-                    href={`/portfolio/${portfolioProject.nextProject}`}
-                    className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors text-sm font-medium"
-                  >
-                    Next: {projects[portfolioProject.nextProject]?.title} →
-                  </Link>
-                )}
+                {/* Next Project */}
+                <div>
+                  {portfolioProject.nextProject && (
+                    <Link
+                      href={`/portfolio/${portfolioProject.nextProject}`}
+                      className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors text-sm font-medium"
+                    >
+                      Next: {projects[portfolioProject.nextProject]?.title} →
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
 
       {/* Image Carousel Modal */}

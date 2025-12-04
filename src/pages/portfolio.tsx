@@ -4,9 +4,28 @@ import Image from "next/image";
 import { getAllPortfolioProjects } from "@/data/portfolioProjects";
 import { Project } from "@/types";
 import TitleBanner from "@/components/banners/TitleBanner";
+import { useState, useEffect } from "react";
 
 export default function Projects() {
   const projects = getAllPortfolioProjects();
+  const [hasAnimated, setHasAnimated] = useState(true); // Default true to prevent flash
+
+  useEffect(() => {
+    // Check if animation has already played this session
+    const alreadyAnimated = sessionStorage.getItem("portfolio-animated");
+
+    if (alreadyAnimated) {
+      setHasAnimated(true);
+    } else {
+      setHasAnimated(false);
+      // Mark as animated after animations complete
+      const timer = setTimeout(() => {
+        sessionStorage.setItem("portfolio-animated", "true");
+        setHasAnimated(true);
+      }, projects.length * 250 + 600);
+      return () => clearTimeout(timer);
+    }
+  }, [projects.length]);
 
   // Helper function to get project image or fallback
   const getProjectImage = (project: Project) => {
@@ -67,8 +86,12 @@ export default function Projects() {
             <Link
               key={project.id}
               href={`/portfolio/${project.slug}`}
-              className="relative bg-white shadow-md rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300 group aspect-[4/3] opacity-0 animate-fade-in"
-              style={{ animationDelay: `${index * 250}ms` }}
+              className={`relative bg-white shadow-md rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300 group aspect-[4/3] ${
+                hasAnimated ? "opacity-100" : "opacity-0 animate-fade-in"
+              }`}
+              style={
+                hasAnimated ? undefined : { animationDelay: `${index * 250}ms` }
+              }
             >
               <Image
                 src={getProjectImage(project)}
