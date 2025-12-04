@@ -1,6 +1,42 @@
 import { Project } from "@/types";
 
 export const projects: Record<string, Project> = {
+  "goldsmith-mews": {
+    id: "goldsmith-mews",
+    slug: "goldsmith-mews",
+    title: "Goldsmith Mews",
+    location: "Goldsmith Mews",
+    description:
+      "This newly completed development consists of four contemporary three-bedroom homes in a terrace, well located in Gravesend, Kent with strong transport links to London.",
+    status: "Completed",
+    completed: "2025",
+    nextProject: "mottingham-airspace-development",
+    thumbnailImage: "/images/Goldsmith-Mews-1.jpg",
+    images: [
+      "/images/Goldsmith-Mews-1.jpg",
+      "/images/Goldsmith-Mews-2.jpg",
+      "/images/Goldsmith-Mews-3.jpg",
+      "/images/Goldsmith-Mews-4.jpg",
+      "/images/Goldsmith-Mews-5.jpg",
+    ],
+  },
+  "mottingham-airspace-development": {
+    id: "mottingham-airspace-development",
+    slug: "mottingham-airspace-development",
+    title: "Mottingham (Airspace development)",
+    location: "Mottingham",
+    description:
+      "Greenwich Council granted planning permission for the construction of a two-bedroom flat on the roof space of our previously completed development of 14 residential units",
+    status: "Construction",
+    completed: "2026",
+    nextProject: "greenwich-park-street",
+    images: [
+      "/images/Mottingham-1.jpg",
+      "/images/Mottingham-2.jpg",
+      "/images/Mottingham-3.jpg",
+    ],
+    thumbnailImage: "/images/Mottingham-1.jpg",
+  },
   "greenwich-park-street": {
     id: "greenwich-park-street",
     slug: "greenwich-park-street",
