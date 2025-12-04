@@ -66,25 +66,26 @@ export default function About() {
           {/* Text Content Section */}
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-600 mb-6">
-              Land Development Property Group (LDPG) was founded in July 2013 by
-              Sudarshan and Navneet Vij, uniting the resources of Mulberry
-              Building Developers and Wyberton Homes Limited.
+              LDPG has a strong reputation for building quality new homes. Our
+              construction team follows the high standards we set, and we’re
+              proud of the care and craftsmanship that go into every project.
             </p>
             <p className="text-lg text-gray-600 mb-6">
-              The company&apos;s main focus remains high quality residential
-              development primarily in South East London. We maximise the
-              potential of derelict buildings and unused land to deliver
-              contemporary luxury homes, apartments and commercial properties of
-              innovative design. The management team maintain a hands-on,
-              day-to-day involvement in the business, ensuring our high
-              standards of building quality are upheld consistently.
+              LDPG specialises in luxury residential apartments, creating
+              comfortable and contemporary homes. With a skilled workforce
+              committed to quality, we deliver spaces that are both stylish and
+              functional.
             </p>
             <p className="text-lg text-gray-600 mb-8">
-              Having been in the industry for over 30 years, we have built a
-              reputation for delivering exceptional service alongside
-              outstanding results. Our team of skilled professionals have the
-              capability and knowhow to handle projects of all sizes and
-              complexities
+              We partner with local architects to create projects that
+              complement their surroundings while delivering innovative design
+              and efficient use of space. Explore our portfolio for a closer
+              look at our previous builds.
+            </p>
+            <p className="text-lg text-gray-600 mb-8">
+              With more than 30 years in the industry, we’ve earned a reputation
+              for dependable service and good workmanship. Our team has the
+              skills and experience to take on a range of projects.
             </p>
 
             {/* Contact Section */}

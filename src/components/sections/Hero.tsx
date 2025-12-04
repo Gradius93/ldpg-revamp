@@ -42,15 +42,12 @@ export default function Hero() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight drop-shadow-2xl text-shadow-lg">
               Land Development Property Group
             </h1>
-            <p className="mt-6 max-w-2xl text-lg sm:text-xl text-white drop-shadow-lg font-medium leading-relaxed">
-              Revitalizing South East London, one luxury development at a time.
-            </p>
             <div className="mt-10">
               <Link
                 href="/about"
                 className="inline-block bg-black/80 hover:bg-white text-white hover:text-black px-8 py-4 text-sm uppercase tracking-wide font-semibold transition-all duration-300 backdrop-blur-sm border border-white/20 hover:border-black/20 drop-shadow-lg rounded-lg"
               >
-                Know More
+                Learn More
               </Link>
             </div>
           </div>
