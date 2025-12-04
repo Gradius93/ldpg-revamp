@@ -74,7 +74,7 @@ export default function Featured() {
           }}
         >
           <Link
-            href={`/portfolio/${project.slug}`}
+            href={`/portfolio/${project.slug}?from=featured`}
             className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700"
             style={{ borderRadius: "1rem" }}
           >
