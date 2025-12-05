@@ -9,19 +9,19 @@ const items: Offer[] = [
     title: "Modern Homes",
     img: "/icons/icon-1-houses.png",
     sideImage: "/images/weardale-cropped.jpg", // Add your side image URL here
-    desc: "LDPG is known for its building of outstanding new homes. Our construction team exacts the high standards we maintain across all our properties. We take pride in the exemplary workmanship demonstrated by our team throughout the build process. The outcome; exceptional modern homes ideal for every family.",
+    desc: "LDPG has a strong reputation for building quality new homes. Our construction team follows the high standards we set, and we’re proud of the care and craftsmanship that go into every project.",
   },
   {
     title: "Luxury Apartments",
     img: "/icons/icon-2-stairs.png",
     sideImage: "/images/greenwich-park-cropped.jpg", // Add your side image URL here
-    desc: "At LDPG, we build luxury residential apartments, passionate about the creation of comfortable and contemporary living spaces.  Our skilled workforce ensures maintenance of the highest standards. Our apartments make for stylish and efficient living spaces with exquisite design.",
+    desc: "LDPG specialises in luxury residential apartments, creating comfortable and contemporary homes. With a skilled workforce committed to quality, we deliver spaces that are both stylish and functional.",
   },
   {
     title: "Innovative Design",
     img: "/icons/icon-3-house-house.png",
     sideImage: "/images/algernon-road-3.jpg", // Add your side image URL here
-    desc: "We collaborate with local architects to deliver projects that fit the local area and environment while also achieving innovative design and use of space. For a closer look at our previous builds, please see our portfolio. ",
+    desc: "We partner with local architects to create projects that complement their surroundings while delivering innovative design and efficient use of space. Explore our portfolio for a closer look at our previous builds.",
   },
 ];
 
