@@ -8,6 +8,14 @@ const heroImages: HeroImage[] = [
     src: "/images/main-home-1.jpg",
     alt: "LDPG luxury residential development with modern patio and landscaping in South East London",
   },
+  {
+    src: "/images/Goldsmith-Mews-1.jpg",
+    alt: "LDPG luxury residential development with modern patio and landscaping in South East London",
+  },
+  {
+    src: "/images/langton-way.jpg",
+    alt: "LDPG luxury residential development with modern patio and landscaping in South East London",
+  },
 ];
 
 export default function Hero() {

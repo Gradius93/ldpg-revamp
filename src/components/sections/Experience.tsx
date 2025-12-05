@@ -61,10 +61,9 @@ export default function Experience() {
           <div className="w-full lg:w-1/2">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 md:p-12">
               <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-                We have been in the industry for over 30 years and have built a
-                reputation for delivering exceptional service and outstanding
-                results. Our team of skilled professionals has the experience
-                and expertise to handle projects of all sizes and complexities.
+                With more than 30 years in the industry, we’ve earned a
+                reputation for dependable service and good workmanship. Our team
+                has the skills and experience to take on a range of projects.
               </p>
             </div>
             <Link
