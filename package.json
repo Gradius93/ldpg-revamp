@@ -16,7 +16,7 @@
     "@next/bundle-analyzer": "^15.5.5",
     "@react-google-maps/api": "^2.20.7",
     "@types/nodemailer": "^7.0.2",
-    "next": "15.5.0",
+    "next": "15.5.7",
     "next-sitemap": "^4.2.3",
     "nodemailer": "^7.0.9",
     "react": "19.1.0",
