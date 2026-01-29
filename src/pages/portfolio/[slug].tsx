@@ -86,9 +86,8 @@ export default function ProjectPage({ portfolioProject }: ProjectPageProps) {
                 src={portfolioProject.images[0]}
                 alt={`${portfolioProject.title} completed property development in ${portfolioProject.location} - main exterior view`}
                 fill
-                className={`object-cover ${
-                  !portfolioProject.imageAmend && "object-bottom"
-                }`}
+                className={`object-cover ${!portfolioProject.imageAmend && "object-bottom"
+                  }`}
                 sizes="100vw"
               />
             </div>
@@ -104,15 +103,12 @@ export default function ProjectPage({ portfolioProject }: ProjectPageProps) {
                   >
                     <Image
                       src={image}
-                      alt={`${
-                        portfolioProject.title
-                      } completed development in ${
-                        portfolioProject.location
-                      } - view ${index + 2}`}
+                      alt={`${portfolioProject.title
+                        } completed development in ${portfolioProject.location
+                        } - view ${index + 2}`}
                       fill
-                      className={`object-cover ${
-                        !portfolioProject.imageAmend && "object-bottom"
-                      }`}
+                      className={`object-cover ${!portfolioProject.imageAmend && "object-bottom"
+                        }`}
                       sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     />
                   </div>
@@ -166,7 +162,7 @@ export default function ProjectPage({ portfolioProject }: ProjectPageProps) {
                 <div>
                   {previousProject ? (
                     <Link
-                      href={`/projects/${previousProject.slug}`}
+                      href={`/portfolio/${previousProject.slug}`}
                       className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors text-sm font-medium"
                     >
                       ← Previous: {previousProject.title}

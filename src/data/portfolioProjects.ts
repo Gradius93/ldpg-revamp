@@ -24,7 +24,7 @@ export const projects: Record<string, Project> = {
     location: "Wemys Road, SE3",
     description: "14 modern 1 and 2 bedroom luxury apartments.",
     status: "Available",
-    completed: "2024",
+    completed: "2005",
     nextProject: "177-lewisham-way-se14",
     images: [
       "/images/the-point.jpg",
@@ -39,7 +39,7 @@ export const projects: Record<string, Project> = {
     location: "177 Lewisham Way, SE14",
     description: "Fourteen modern one and two bedroom apartments.",
     status: "Completed",
-    completed: "2023",
+    completed: "2007",
     nextProject: "algernon-road-se13",
     images: [
       "/images/lewisham-way.jpg",
@@ -55,7 +55,7 @@ export const projects: Record<string, Project> = {
     description:
       "Fourteen contemporary residential apartments in the heart of an area of Lewisham currently undergoing wholesale regeneration. Close to Lewisham DLR and train links.",
     status: "Sold to Housing Association Client",
-    completed: "2022",
+    completed: "2010",
     nextProject: "park-view-weardale-road-se13",
     images: [
       "/images/algernon-road.jpg",
@@ -71,7 +71,7 @@ export const projects: Record<string, Project> = {
     description:
       "Luxury residential development with park views and contemporary living spaces.",
     status: "All Sold",
-    completed: "2021",
+    completed: "2012",
     nextProject: "banning-street-se10",
     images: [
       "/images/parkview-1.jpg",
@@ -87,7 +87,7 @@ export const projects: Record<string, Project> = {
     description:
       "Modern residential apartments with excellent transport links and contemporary design.",
     status: "Available",
-    completed: "2023",
+    completed: "2002",
     nextProject: "blackwall-lane-se10",
     images: ["/images/banning-street-1.jpeg", "/images/banning-street-2.jpeg"],
     imageAmend: true,
@@ -100,7 +100,7 @@ export const projects: Record<string, Project> = {
     description:
       "Commercial and mixed-use development featuring innovative architecture and sustainable design.",
     status: "In Progress",
-    completed: "2024",
+    completed: "2019",
     nextProject: "vista-buildings-se10",
     images: [
       "/images/blackwall-1.jpg",
@@ -116,8 +116,8 @@ export const projects: Record<string, Project> = {
     description:
       "Premium commercial development with stunning views and modern office spaces.",
     status: "Completed",
-    completed: "2022",
-    nextProject: "aberdeen-terrace-se3-2",
+    completed: "2007",
+    nextProject: "mill-apartments",
     images: [
       "/images/vista-building-1.jpeg",
       "/images/vista-building-2.jpeg",
@@ -133,7 +133,8 @@ export const projects: Record<string, Project> = {
     description:
       "Additional development on Aberdeen Terrace featuring luxury residential units.",
     status: "Planning",
-    completed: "2025",
+    completed: "2019",
+    nextProject: "woodrow-se13",
     images: [
       "/images/mill-apartments-1.jpg",
       "/images/mill-apartments-2.jpg",
@@ -150,7 +151,8 @@ export const projects: Record<string, Project> = {
     description:
       "Additional development on Aberdeen Terrace featuring luxury residential units.",
     status: "Planning",
-    completed: "2025",
+    completed: "2023",
+    nextProject: "court-road-se9",
     images: [
       "/images/woodrow-1.jpg",
       "/images/woodrow-2.jpg",
@@ -168,7 +170,8 @@ export const projects: Record<string, Project> = {
     description:
       "Additional development on Aberdeen Terrace featuring luxury residential units.",
     status: "Planning",
-    completed: "2025",
+    completed: "2021",
+    nextProject: "langton-way-se3",
     images: [
       "/images/court-road-1.jpeg",
       "/images/court-road-2.jpg",
@@ -185,7 +188,8 @@ export const projects: Record<string, Project> = {
     description:
       "Additional development on Aberdeen Terrace featuring luxury residential units.",
     status: "Planning",
-    completed: "2025",
+    completed: "2018",
+    nextProject: "pleasaunce-mansions-se10",
     images: ["/images/langton-way.jpg"],
   },
   "pleasaunce-mansions-se10": {
@@ -196,7 +200,8 @@ export const projects: Record<string, Project> = {
     description:
       "Additional development on Aberdeen Terrace featuring luxury residential units.",
     status: "Planning",
-    completed: "2025",
+    nextProject: "282-baring-road-se12",
+    completed: "2004",
     images: ["/images/pleasaunce-1.jpeg", "/images/pleasaunce-2.jpeg"],
     imageAmend: true,
   },
@@ -208,7 +213,8 @@ export const projects: Record<string, Project> = {
     description:
       "Additional development on Aberdeen Terrace featuring luxury residential units.",
     status: "Planning",
-    completed: "2025",
+    completed: "2009",
+    nextProject: "st-peters-court-se12",
     images: ["/images/Barring-road.jpeg"],
     imageAmend: true,
   },
@@ -220,7 +226,8 @@ export const projects: Record<string, Project> = {
     description:
       "Additional development on Aberdeen Terrace featuring luxury residential units.",
     status: "Planning",
-    completed: "2025",
+    completed: "2014",
+    nextProject: "the-copper-apartments-blackheath-se3",
     images: [
       "/images/st-peters-court-1.jpg",
       "/images/st-peters-court-2.jpg",
@@ -235,7 +242,7 @@ export const projects: Record<string, Project> = {
     description:
       "Additional development on Aberdeen Terrace featuring luxury residential units.",
     status: "Planning",
-    completed: "2025",
+    completed: "2008",
     images: [
       "/images/copper-apartments-1.jpg",
       "/images/copper-apartments-2.jpg",
@@ -258,11 +265,11 @@ export function getPortfolioProjectSlugs(): string[] {
 }
 
 export function getPreviousPortfolioProject(
-  currentSlug: string
+  currentSlug: string,
 ): Project | undefined {
   // Find the project that has the current project as its nextProject
   const previousProjectEntry = Object.entries(projects).find(
-    ([slug, project]) => project.nextProject === currentSlug
+    ([slug, project]) => project.nextProject === currentSlug,
   );
 
   return previousProjectEntry ? previousProjectEntry[1] : undefined;
