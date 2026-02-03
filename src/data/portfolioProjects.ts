@@ -23,7 +23,7 @@ export const projects: Record<string, Project> = {
     title: "THE POINT, WEMYS ROAD, SE3",
     location: "Wemys Road, SE3",
     description: "14 modern 1 and 2 bedroom luxury apartments.",
-    status: "Available",
+    status: "All Sold",
     completed: "2005",
     nextProject: "177-lewisham-way-se14",
     images: [
@@ -37,9 +37,9 @@ export const projects: Record<string, Project> = {
     slug: "177-lewisham-way-se14",
     title: "177 Lewisham Way SE14",
     location: "177 Lewisham Way, SE14",
-    description: "Fourteen modern one and two bedroom apartments.",
-    status: "Completed",
-    completed: "2007",
+    description: "14 modern 1 and 2 bedroom apartments",
+    status: "Sold to Housing Association Client",
+    completed: "August 2008",
     nextProject: "algernon-road-se13",
     images: [
       "/images/lewisham-way.jpg",
@@ -54,8 +54,8 @@ export const projects: Record<string, Project> = {
     location: "Algernon Road, SE13",
     description:
       "Fourteen contemporary residential apartments in the heart of an area of Lewisham currently undergoing wholesale regeneration. Close to Lewisham DLR and train links.",
-    status: "Sold to Housing Association Client",
-    completed: "2010",
+    status: "All Sold",
+    completed: "July 2011",
     nextProject: "park-view-weardale-road-se13",
     images: [
       "/images/algernon-road.jpg",
@@ -98,9 +98,9 @@ export const projects: Record<string, Project> = {
     title: "BLACKWALL LANE, SE10",
     location: "Blackwall Lane, SE10",
     description:
-      "Commercial and mixed-use development featuring innovative architecture and sustainable design.",
-    status: "In Progress",
-    completed: "2019",
+      "20 high quality 2 bedroom duplex apartments and 390sqm of commercial space on the ground floor and 15 parking spaces.",
+    status: "Sold to Housing Association Client",
+    completed: "2015",
     nextProject: "vista-buildings-se10",
     images: [
       "/images/blackwall-1.jpg",
@@ -168,9 +168,9 @@ export const projects: Record<string, Project> = {
     title: "Court Road SE9",
     location: "Court Road, SE9",
     description:
-      "Additional development on Aberdeen Terrace featuring luxury residential units.",
-    status: "Planning",
-    completed: "2021",
+      "14 high quality residential flats with a 3000 ft2 retail unit located 15 meters from Mottingham station providing excellent transport links into London.",
+    status: "All Sold",
+    completed: "2019",
     nextProject: "langton-way-se3",
     images: [
       "/images/court-road-1.jpeg",
@@ -239,9 +239,8 @@ export const projects: Record<string, Project> = {
     slug: "the-copper-apartments-blackheath-se3",
     title: "The Copper Apartments, Blackheath SE3",
     location: "The Copper Apartments, Blackheath SE3",
-    description:
-      "Additional development on Aberdeen Terrace featuring luxury residential units.",
-    status: "Planning",
+    description: "13 Modern 2 Bedroom Apartments",
+    status: "All Sold",
     completed: "2008",
     images: [
       "/images/copper-apartments-1.jpg",
@@ -265,11 +264,11 @@ export function getPortfolioProjectSlugs(): string[] {
 }
 
 export function getPreviousPortfolioProject(
-  currentSlug: string,
+  currentSlug: string
 ): Project | undefined {
   // Find the project that has the current project as its nextProject
   const previousProjectEntry = Object.entries(projects).find(
-    ([slug, project]) => project.nextProject === currentSlug,
+    ([slug, project]) => project.nextProject === currentSlug
   );
 
   return previousProjectEntry ? previousProjectEntry[1] : undefined;
